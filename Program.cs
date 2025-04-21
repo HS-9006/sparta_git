@@ -142,10 +142,18 @@ class GameLogic
                             for (int i = 0; i < _player.inventory.Count; i++)
                             {
                                 var item = _player.inventory[i];
-                                bool isEquipped = (item == _player.equippedWeapon || item == _player.equippedArmor);
-                                string equippedMark = isEquipped ? "[E]" : "   ";
+                                bool isMark = (item == _player.equippedWeapon || item == _player.equippedArmor);
+                                //삼항연산자 조건 ? 참일 때 값 : 거짓일 때 값;
+                                string mark = isMark ? "[E]" : "   ";
 
-                                Console.WriteLine($"{equippedMark} {item.name} | 공격력 +{item.attack} | 방어력 +{item.defense} | {item.description}");
+                                Console.WriteLine($"{mark} {item.name} | 공격력 +{item.attack} | 방어력 +{item.defense} | {item.description}");
+                            }
+                            console.WriteLine("0. 나가기");
+                            int state = int.parse(console.WriteLine());
+
+                            if (state == 0)
+                            {
+                                isWearing = false;
                             }
                         }
                     }
